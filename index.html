@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منوی کافی‌شاپ</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap');
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background: #f2ebe4;
+            color: #2c1f14;
+            padding: 16px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .menu-card {
+            max-width: 700px;
+            width: 100%;
+            background: #fefcf7;
+            border-radius: 32px;
+            padding: 30px 24px 24px;
+            box-shadow: 0 12px 48px rgba(44,31,20,0.12);
+        }
+        .menu-header { text-align: center; padding-bottom: 20px; border-bottom: 2px dashed #dccfc4; margin-bottom: 20px; }
+        .menu-header .cafe-icon { font-size: 48px; display: block; margin-bottom: 4px; }
+        .menu-header h1 { font-size: 32px; font-weight: 900; color: #3b281c; }
+        .menu-header .subtitle { font-size: 16px; color: #8a7566; margin-top: 4px; }
+        .menu-header .divider-line { width: 60px; height: 3px; background: #c7b2a2; margin: 12px auto 0; border-radius: 4px; }
+        .category-section { margin-bottom: 28px; }
+        .category-title { font-size: 22px; font-weight: 900; color: #4d3223; border-right: 5px solid #b3927c; padding-right: 14px; margin-bottom: 14px; }
+        .menu-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 6px; border-bottom: 1px solid #efe6de; }
+        .menu-item:last-child { border-bottom: none; }
+        .menu-item:hover { background: #f8f2ec; border-radius: 10px; padding-left: 12px; padding-right: 12px; }
+        .item-info { flex: 1; }
+        .item-name { font-size: 18px; font-weight: 700; color: #2c1f14; }
+        .item-desc { font-size: 14px; color: #8a7566; margin-top: 2px; }
+        .item-price { font-size: 19px; font-weight: 900; color: #6b4c37; background: #f3ede8; padding: 4px 14px; border-radius: 30px; white-space: nowrap; margin-right: 12px; }
+        .special-offer { background: linear-gradient(135deg, #f9f0e9, #f3e5db); border-radius: 18px; padding: 16px 20px; margin-top: 24px; border: 1px solid #e1cfc0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+        .special-offer .label { font-weight: 700; font-size: 18px; color: #4d3223; }
+        .special-offer .label span { background: #6b4c37; color: #fff; padding: 2px 12px; border-radius: 40px; font-size: 14px; margin-right: 8px; }
+        .menu-footer { margin-top: 28px; padding-top: 18px; border-top: 2px dashed #dccfc4; text-align: center; font-size: 14px; color: #9a877a; }
+        .menu-footer .contact { font-weight: 700; color: #4d3223; font-size: 16px; }
+        .social-links { margin-top: 12px; display: flex; justify-content: center; gap: 16px; }
+        .social-links a { color: #6b4c37; text-decoration: none; font-size: 20px; transition: 0.3s; }
+        .social-links a:hover { color: #3b281c; transform: scale(1.1); }
+        @media (max-width: 480px) { .menu-card { padding: 18px 14px; } .menu-header h1 { font-size: 26px; } .item-name { font-size: 16px; } .item-price { font-size: 16px; padding: 2px 12px; } .category-title { font-size: 19px; } .special-offer { flex-direction: column; align-items: flex-start; gap: 8px; } }
+        @media print { body { background: white; padding: 0; } .menu-card { box-shadow: none; border: 1px solid #ddd; } .menu-item:hover { background: none; } }
+    </style>
+</head>
+<body>
+<div class="menu-card">
+    <header class="menu-header">
+        <span class="cafe-icon">☕</span>
+        <h1>کافی‌شاپ آرامش</h1>
+        <p class="subtitle">طعمی به‌یادماندنی در هر فنجان</p>
+        <div class="divider-line"></div>
+    </header>
+    <!-- ====== قهوه ====== -->
+    <section class="category-section">
+        <h2 class="category-title">☕ قهوه‌های داغ</h2>
+        <div class="menu-item"><div class="item-info"><div class="item-name">اسپرسو</div><div class="item-desc">غلیظ و عطری</div></div><div class="item-price">۳۵,۰۰۰</div></div>
+        <div class="menu-item"><div class="item-info"><div class="item-name">لاته</div><div class="item-desc">با شیر گرم و کف نرم</div></div><div class="item-price">۴۸,۰۰۰</div></div>
+        <div class="menu-item"><div class="item-info"><div class="item-name">کاپوچینو</div><div class="item-desc">با پودر دارچین یا کاکائو</div></div><div class="item-price">۵۲,۰۰۰</div></div>
+        <div class="menu-item"><div class="item-info"><div class="item-name">موکا</div><div class="item-desc">اسپرسو، شیر و شکلات</div></div><div class="item-price">۵۵,۰۰۰</div></div>
+    </section>
+    <!-- ====== چای ====== -->
+    <section class="category-section">
+        <h2 class="category-title">🍵 چای و نوشیدنی‌های گرم</h2>
+        <div class="menu-item"><div class="item-info"><div class="item-name">چای سیاه</div><div class="item-desc">با هل و نعناع تازه</div></div><div class="item-price">۲۵,۰۰۰</div></div>
+        <div class="menu-item"><div class="item-info"><div class="item-name">چای سبز</div><div class="item-desc">ژاپنی با طعم یاس</div></div><div class="item-price">۳۰,۰۰۰</div></div>
+        <div class="menu-item"><div class="item-info"><div class="item-name">شیر گرم عسلی</div><div class="item-desc">شیر ارگانیک با عسل و دارچین</div></div><div class="item-price">۳۸,۰۰۰</div></div>
+    </section>
+    <!-- ====== کیک ====== -->
+    <section class="category-section">
+        <h2 class="category-title">🍰 کیک و شیرینی</h2>
+        <div class="menu-item"><div class="item-info"><div class="item-name">کیک شکلاتی</div><div class="item-desc">با شکلات تلخ بلژیکی</div></div><div class="item-price">۵۵,۰۰۰</div></div>
+        <div class="menu-item"><div class="item-info"><div class="item-name">کیک هویج</div><div class="item-desc">با گردو و خامه‌ی پنیری</div></div><div class="item-price">۵۰,۰۰۰</div></div>
+        <div class="menu-item"><div class="item-info"><div class="item-name">کروسان شکلاتی</div><div class="item-desc">داغ و ترد با شکلات ذوب‌شده</div></div><div class="item-price">۴۵,۰۰۰</div></div>
+    </section>
+    <!-- ====== پیشنهاد ویژه ====== -->
+    <div class="special-offer">
+        <div class="label">⭐ پیشنهاد ویژه <span>جدید</span></div>
+        <div class="offer-text">سفارش هر نوشیدنی + یک کیک کوچک <strong>۱۰٪ تخفیف</strong></div>
+    </div>
+    <!-- ====== فوتر ====== -->
+    <footer class="menu-footer">
+        <p><span class="contact">📞 ۰۹۱۲-XXX-XXXX</span> &nbsp;|&nbsp; <span>📍 خیابان ولیعصر، نبش کوچهٔ هنر</span></p>
+        <div class="social-links">
+            <a href="https://instagram.com/yourcafe" target="_blank">📷 اینستاگرام</a>
+            <a href="https://t.me/yourcafe" target="_blank">📱 تلگرام</a>
+            <a href="https://wa.me/0912XXXXXXX" target="_blank">💬 واتساپ</a>
+        </div>
+        <p style="margin-top: 8px; font-size: 12px; color: #b8a79a;">لطفاً سفارش خود را به باریستا اعلام کنید</p>
+    </footer>
+</div>
+</body>
+</html>
