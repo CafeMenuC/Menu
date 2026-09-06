@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>منوی کافی‌شاپ</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* ====== ریست و فونت ====== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap');
+
         body {
-            font-family: 'Vazirmatn', sans-serif;
+            font-family: 'Vazirmatn', 'Tahoma', sans-serif;
             background: #f2ebe4;
             color: #2c1f14;
             padding: 16px;
@@ -17,85 +24,400 @@
             justify-content: center;
             align-items: center;
         }
+
+        /* ====== کارت اصلی منو ====== */
         .menu-card {
             max-width: 700px;
             width: 100%;
             background: #fefcf7;
             border-radius: 32px;
             padding: 30px 24px 24px;
-            box-shadow: 0 12px 48px rgba(44,31,20,0.12);
+            box-shadow: 0 12px 48px rgba(44, 31, 20, 0.12);
+            transition: all 0.2s;
         }
-        .menu-header { text-align: center; padding-bottom: 20px; border-bottom: 2px dashed #dccfc4; margin-bottom: 20px; }
-        .menu-header .cafe-icon { font-size: 48px; display: block; margin-bottom: 4px; }
-        .menu-header h1 { font-size: 32px; font-weight: 900; color: #3b281c; }
-        .menu-header .subtitle { font-size: 16px; color: #8a7566; margin-top: 4px; }
-        .menu-header .divider-line { width: 60px; height: 3px; background: #c7b2a2; margin: 12px auto 0; border-radius: 4px; }
-        .category-section { margin-bottom: 28px; }
-        .category-title { font-size: 22px; font-weight: 900; color: #4d3223; border-right: 5px solid #b3927c; padding-right: 14px; margin-bottom: 14px; }
-        .menu-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 6px; border-bottom: 1px solid #efe6de; }
-        .menu-item:last-child { border-bottom: none; }
-        .menu-item:hover { background: #f8f2ec; border-radius: 10px; padding-left: 12px; padding-right: 12px; }
-        .item-info { flex: 1; }
-        .item-name { font-size: 18px; font-weight: 700; color: #2c1f14; }
-        .item-desc { font-size: 14px; color: #8a7566; margin-top: 2px; }
-        .item-price { font-size: 19px; font-weight: 900; color: #6b4c37; background: #f3ede8; padding: 4px 14px; border-radius: 30px; white-space: nowrap; margin-right: 12px; }
-        .special-offer { background: linear-gradient(135deg, #f9f0e9, #f3e5db); border-radius: 18px; padding: 16px 20px; margin-top: 24px; border: 1px solid #e1cfc0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; }
-        .special-offer .label { font-weight: 700; font-size: 18px; color: #4d3223; }
-        .special-offer .label span { background: #6b4c37; color: #fff; padding: 2px 12px; border-radius: 40px; font-size: 14px; margin-right: 8px; }
-        .menu-footer { margin-top: 28px; padding-top: 18px; border-top: 2px dashed #dccfc4; text-align: center; font-size: 14px; color: #9a877a; }
-        .menu-footer .contact { font-weight: 700; color: #4d3223; font-size: 16px; }
-        .social-links { margin-top: 12px; display: flex; justify-content: center; gap: 16px; }
-        .social-links a { color: #6b4c37; text-decoration: none; font-size: 20px; transition: 0.3s; }
-        .social-links a:hover { color: #3b281c; transform: scale(1.1); }
-        @media (max-width: 480px) { .menu-card { padding: 18px 14px; } .menu-header h1 { font-size: 26px; } .item-name { font-size: 16px; } .item-price { font-size: 16px; padding: 2px 12px; } .category-title { font-size: 19px; } .special-offer { flex-direction: column; align-items: flex-start; gap: 8px; } }
-        @media print { body { background: white; padding: 0; } .menu-card { box-shadow: none; border: 1px solid #ddd; } .menu-item:hover { background: none; } }
+
+        /* ====== هدر ====== */
+        .menu-header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 2px dashed #dccfc4;
+            margin-bottom: 20px;
+        }
+
+        .menu-header .cafe-icon {
+            font-size: 48px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .menu-header h1 {
+            font-size: 32px;
+            font-weight: 900;
+            color: #3b281c;
+            letter-spacing: 1px;
+        }
+
+        .menu-header .subtitle {
+            font-size: 16px;
+            color: #8a7566;
+            margin-top: 4px;
+            font-weight: 400;
+        }
+
+        .menu-header .divider-line {
+            width: 60px;
+            height: 3px;
+            background: #c7b2a2;
+            margin: 12px auto 0;
+            border-radius: 4px;
+        }
+
+        /* ====== دکمه‌های دسته‌بندی ====== */
+        .categories {
+            display: flex;
+            gap: 10px;
+            padding: 15px 0 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            border-bottom: 2px dashed #dccfc4;
+            margin-bottom: 20px;
+        }
+
+        .categories button {
+            padding: 10px 22px;
+            border: 2px solid #d4b8a0;
+            background: white;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: inherit;
+            color: #4d3223;
+        }
+
+        .categories button:hover {
+            background: #f3ede8;
+            transform: scale(1.02);
+        }
+
+        .categories button.active {
+            background: #5a3e2b;
+            color: white;
+            border-color: #5a3e2b;
+        }
+
+        /* ====== لیست آیتم‌ها ====== */
+        #menu-list {
+            min-height: 200px;
+        }
+
+        .category-title {
+            font-size: 22px;
+            font-weight: 900;
+            color: #4d3223;
+            border-right: 5px solid #b3927c;
+            padding-right: 14px;
+            margin-bottom: 14px;
+            display: none;
+        }
+
+        .category-title.show {
+            display: block;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 6px;
+            border-bottom: 1px solid #efe6de;
+            transition: background 0.2s;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .menu-item:hover {
+            background: #f8f2ec;
+            border-radius: 10px;
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+
+        .item-info {
+            flex: 1;
+        }
+
+        .item-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #2c1f14;
+        }
+
+        .item-desc {
+            font-size: 14px;
+            color: #8a7566;
+            margin-top: 2px;
+            font-weight: 400;
+        }
+
+        .item-price {
+            font-size: 19px;
+            font-weight: 900;
+            color: #6b4c37;
+            background: #f3ede8;
+            padding: 4px 14px;
+            border-radius: 30px;
+            white-space: nowrap;
+            margin-right: 12px;
+        }
+
+        /* ====== پیام خالی ====== */
+        .empty-message {
+            text-align: center;
+            padding: 40px 20px;
+            color: #8a7566;
+            font-size: 16px;
+        }
+
+        /* ====== فوتر ====== */
+        .menu-footer {
+            margin-top: 28px;
+            padding-top: 18px;
+            border-top: 2px dashed #dccfc4;
+            text-align: center;
+            font-size: 14px;
+            color: #9a877a;
+        }
+
+        .menu-footer .contact {
+            font-weight: 700;
+            color: #4d3223;
+            font-size: 16px;
+        }
+
+        .menu-footer .contact i {
+            font-style: normal;
+            background: #e5d8cf;
+            padding: 2px 14px;
+            border-radius: 30px;
+            margin: 0 4px;
+        }
+
+        .social-links {
+            margin-top: 12px;
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .social-links a {
+            color: #6b4c37;
+            text-decoration: none;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #3b281c;
+            transform: scale(1.1);
+        }
+
+        /* ====== ریسپانسیو ====== */
+        @media (max-width: 480px) {
+            .menu-card {
+                padding: 18px 14px;
+            }
+            .menu-header h1 {
+                font-size: 26px;
+            }
+            .item-name {
+                font-size: 16px;
+            }
+            .item-price {
+                font-size: 16px;
+                padding: 2px 12px;
+            }
+            .categories button {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .menu-card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                border-radius: 12px;
+            }
+            .menu-item:hover {
+                background: none;
+            }
+        }
     </style>
 </head>
 <body>
-<div class="menu-card">
-    <header class="menu-header">
-        <span class="cafe-icon">☕</span>
-        <h1>کافی‌شاپ آرامش</h1>
-        <p class="subtitle">طعمی به‌یادماندنی در هر فنجان</p>
-        <div class="divider-line"></div>
-    </header>
-    <!-- ====== قهوه ====== -->
-    <section class="category-section">
-        <h2 class="category-title">☕ قهوه‌های داغ</h2>
-        <div class="menu-item"><div class="item-info"><div class="item-name">اسپرسو</div><div class="item-desc">غلیظ و عطری</div></div><div class="item-price">۳۵,۰۰۰</div></div>
-        <div class="menu-item"><div class="item-info"><div class="item-name">لاته</div><div class="item-desc">با شیر گرم و کف نرم</div></div><div class="item-price">۴۸,۰۰۰</div></div>
-        <div class="menu-item"><div class="item-info"><div class="item-name">کاپوچینو</div><div class="item-desc">با پودر دارچین یا کاکائو</div></div><div class="item-price">۵۲,۰۰۰</div></div>
-        <div class="menu-item"><div class="item-info"><div class="item-name">موکا</div><div class="item-desc">اسپرسو، شیر و شکلات</div></div><div class="item-price">۵۵,۰۰۰</div></div>
-    </section>
-    <!-- ====== چای ====== -->
-    <section class="category-section">
-        <h2 class="category-title">🍵 چای و نوشیدنی‌های گرم</h2>
-        <div class="menu-item"><div class="item-info"><div class="item-name">چای سیاه</div><div class="item-desc">با هل و نعناع تازه</div></div><div class="item-price">۲۵,۰۰۰</div></div>
-        <div class="menu-item"><div class="item-info"><div class="item-name">چای سبز</div><div class="item-desc">ژاپنی با طعم یاس</div></div><div class="item-price">۳۰,۰۰۰</div></div>
-        <div class="menu-item"><div class="item-info"><div class="item-name">شیر گرم عسلی</div><div class="item-desc">شیر ارگانیک با عسل و دارچین</div></div><div class="item-price">۳۸,۰۰۰</div></div>
-    </section>
-    <!-- ====== کیک ====== -->
-    <section class="category-section">
-        <h2 class="category-title">🍰 کیک و شیرینی</h2>
-        <div class="menu-item"><div class="item-info"><div class="item-name">کیک شکلاتی</div><div class="item-desc">با شکلات تلخ بلژیکی</div></div><div class="item-price">۵۵,۰۰۰</div></div>
-        <div class="menu-item"><div class="item-info"><div class="item-name">کیک هویج</div><div class="item-desc">با گردو و خامه‌ی پنیری</div></div><div class="item-price">۵۰,۰۰۰</div></div>
-        <div class="menu-item"><div class="item-info"><div class="item-name">کروسان شکلاتی</div><div class="item-desc">داغ و ترد با شکلات ذوب‌شده</div></div><div class="item-price">۴۵,۰۰۰</div></div>
-    </section>
-    <!-- ====== پیشنهاد ویژه ====== -->
-    <div class="special-offer">
-        <div class="label">⭐ پیشنهاد ویژه <span>جدید</span></div>
-        <div class="offer-text">سفارش هر نوشیدنی + یک کیک کوچک <strong>۱۰٪ تخفیف</strong></div>
-    </div>
-    <!-- ====== فوتر ====== -->
-    <footer class="menu-footer">
-        <p><span class="contact">📞 ۰۹۱۲-XXX-XXXX</span> &nbsp;|&nbsp; <span>📍 خیابان ولیعصر، نبش کوچهٔ هنر</span></p>
-        <div class="social-links">
-            <a href="https://instagram.com/yourcafe" target="_blank">📷 اینستاگرام</a>
-            <a href="https://t.me/yourcafe" target="_blank">📱 تلگرام</a>
-            <a href="https://wa.me/0912XXXXXXX" target="_blank">💬 واتساپ</a>
+
+    <div class="menu-card">
+
+        <!-- ====== هدر ====== -->
+        <header class="menu-header">
+            <span class="cafe-icon">☕</span>
+            <h1>کافی‌شاپ </h1>
+            <p class="subtitle">طعمی به‌یادماندنی در هر فنجان</p>
+            <div class="divider-line"></div>
+        </header>
+
+        <!-- ====== دکمه‌های دسته‌بندی ====== -->
+        <div class="categories">
+            <button class="active" data-category="all">همه</button>
+            <button data-category="hot">☕ نوشیدنی‌های گرم</button>
+            <button data-category="cold">🧊 نوشیدنی‌های سرد</button>
+            <button data-category="tea">🍵 دمنوش</button>
+            <button data-category="mocktail">🍹 ماکتیل</button>
+            <button data-category="cake">🍰 کیک</button>
         </div>
-        <p style="margin-top: 8px; font-size: 12px; color: #b8a79a;">لطفاً سفارش خود را به باریستا اعلام کنید</p>
-    </footer>
-</div>
+
+        <!-- ====== لیست منو ====== -->
+        <div id="menu-list"></div>
+
+        <!-- ====== فوتر ====== -->
+        <footer class="menu-footer">
+            <p>
+                <span class="contact">📞 <i>0911111111</i></span>
+                &nbsp;|&nbsp;
+                <span>📍 خیابان دانشجو ، دانشجو 28</span>
+            </p>
+            <div class="social-links">
+                <a href="https://instagram.com/yourcafe" target="_blank">📷 اینستاگرام</a>
+                <a href="https://t.me/yourcafe" target="_blank">📱 تلگرام</a>
+                <a href="https://wa.me/0912XXXXXXX" target="_blank">💬 واتساپ</a>
+            </div>
+            <p style="margin-top: 8px; font-size: 12px; color: #b8a79a;">
+                لطفاً سفارش خود را به باریستا اعلام کنید
+            </p>
+        </footer>
+
+    </div>
+
+    <script>
+        // ============================================================
+        //  داده‌های منو
+        // ============================================================
+        const menuData = {
+            hot: [
+                { name: "اسپرسو", price: "145", desc: "50/50 ، شکلات" },
+                { name: "امریکن", price: "170", desc: "اسپرسو + آب" },
+                { name: "کاپوچینو", price: "220", desc: "اسپرسو + شیر + فوم" },
+                { name: "لاته", price: "250", desc: "اسپرسو + شیر" },
+                { name: "لاته سیروپ", price: "300", desc: "اسپرسو + شیر + سیروپ" },
+                { name: "هات چاکلت", price: "280", desc: "شیر + خامه + پودرچاکلت + شکر" },
+                { name: "موکا", price: "320", desc: "اسپرسو + شیر + سس شکلات + شکر" },
+                { name: "شیرکاکائو", price: "200", desc: "شیر + کاکائو + شکر" },
+            ],
+            cold: [
+                { name: "آیس اسپرسو", price: "145", desc: "50/50 ، شکلات ، یخ" },
+                { name: "آیس امریکن", price: "170", desc: "اسپرسو + آب + یخ" },
+                { name: "آیس لاته", price: "250", desc: "اسپرسو + شیر + یخ" },
+                { name: "آیس لاته سیروپ", price: "300", desc: "اسپرسو + شیر + یخ + سیروپ" },
+                { name: "موکا فراپه", price: "320", desc: "" },
+                { name: "آفوگاتو", price: "0", desc: "اسپرسو + بستنی" },
+                { name: "تونیک", price: "190", desc: "اسپرسو +آب گازدار" },
+            ],
+            tea: [
+                { name: "چای کلاسیک", price: "0", desc: "" },
+                { name: "چای مراکش", price: "0", desc: "" },
+                { name: "چای ماسالا", price: "0", desc: "" },
+                { name: "دمنوش لیمو عسل آویشن", price: "0", desc: "" },
+            ],
+            mocktail: [
+                { name: "موهیتو", price: "0", desc: "نعناع تازه، لیمو و یخ" },
+                { name: "لیموناد", price: "0", desc: "" },
+            ],
+            cake: [
+                { name: "اشترودل رضوی", price: "210", desc: "گوشت و مرغ" },
+            ],
+        };
+
+        // ============================================================
+        //  نمایش منو
+        // ============================================================
+        const menuList = document.getElementById('menu-list');
+
+        function renderMenu(category) {
+            menuList.innerHTML = '';
+
+            let items = [];
+            let title = '';
+
+            if (category === 'all') {
+                for (let key in menuData) {
+                    items = items.concat(menuData[key]);
+                }
+                title = 'همه آیتم‌ها';
+            } else {
+                items = menuData[category] || [];
+                const categoryNames = {
+                    hot: '☕ نوشیدنی‌های گرم',
+                    cold: '🧊 نوشیدنی‌های سرد',
+                    tea: '🍵 دمنوش',
+                    mocktail: '🍹 ماکتیل',
+                    cake: '🍰 کیک',
+                };
+                title = categoryNames[category] || category;
+            }
+
+            if (items.length === 0) {
+                menuList.innerHTML = `<div class="empty-message">هیچ آیتمی در این دسته وجود ندارد</div>`;
+                return;
+            }
+
+            // عنوان دسته
+            const titleEl = document.createElement('h2');
+            titleEl.className = 'category-title show';
+            titleEl.textContent = title;
+            menuList.appendChild(titleEl);
+
+            // آیتم‌ها
+            items.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'menu-item';
+                div.innerHTML = `
+                    <div class="item-info">
+                        <div class="item-name">${item.name}</div>
+                        <div class="item-desc">${item.desc || ''}</div>
+                    </div>
+                    <div class="item-price">${item.price}</div>
+                `;
+                menuList.appendChild(div);
+            });
+        }
+
+        // ============================================================
+        //  رویداد کلیک روی دکمه‌ها
+        // ============================================================
+        document.querySelectorAll('.categories button').forEach(btn => {
+            btn.addEventListener('click', function () {
+                // کلاس active رو از همه بردار
+                document.querySelectorAll('.categories button').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                const category = this.getAttribute('data-category');
+                renderMenu(category);
+            });
+        });
+
+        // ============================================================
+        //  نمایش اولیه (همه)
+        // ============================================================
+        renderMenu('all');
+    </script>
+
 </body>
 </html>
